@@ -1,0 +1,15 @@
+@(member: Member)
+<!-- This file is the standard for personal info display. Edit here and it will change everywhere. -->
+<style>
+    /*no style elements required for now
+
+</style>
+<div id="PersonalInfoText">
+    <p>Class of @member.getGradYear()<br>
+        @if(member.getMajor != "" && member.getMajor != null) {Majoring in @member.getMajor() @if(member.getSecondMajor != "" && member.getSecondMajor != null){ and @member.getSecondMajor()}}<br>
+        @member.getEmail()
+                                </p>
+</div>
+<div id="Blurb">
+    <p>@member.getBlurb()</p>
+</div>

@@ -1,0 +1,131 @@
+@import play.data.Form
+@(mydick: Form[models.Member], m:Member)
+
+
+<!---profiles page gets rendered with users profile text or as an input form, update button redirects to the same--->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Edit Profile</title>
+    <!--<link rel="stylesheet" href="profile.css" />-->
+    <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+    <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/material.min.css")"/>
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+    <link rel="import" href="bower_components/paper-button/paper-button.html">
+    <link rel="import" href="bower_components/paper-input/paper-input.html">
+</head>
+
+<body>
+<!-- The drawer is always open in large screens. The header is always shown,
+  even in small screens. -->
+<style>
+    body  {
+        background-image: url("@routes.Assets.versioned("images/Campus Y Background.jpg")");
+        background-size: cover;
+    }
+
+    .demo-card-wide.mdl-card {
+    width: 512px;
+    margin: 0 auto;
+    }
+    .demo-card-wide > .mdl-card__title {
+    color:  #fff;
+    height: 176px;
+    background-color: #4a6a85
+    }
+    .demo-card-wide > .mdl-card__title ul {
+    list-style-type: none;
+    columns: 2;
+    }
+    .demo-card-wide > .mdl-card__menu {
+    color: #fff;
+    }
+    .mdl-textfield  {
+    margin-left:0px;
+    color:#0a2f4e;
+    }
+    .form{
+    padding: 30px;
+    }
+
+
+</style>
+
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">Navigation</span>
+            <nav class="mdl-navigation">
+                    <!---add navigation to form input here--->
+                    <!---edit button opens s form inside tha card that can then be saved--->
+
+                <a class="mdl-navigation__link" href="@routes.Application.profile()">View Profile</a>
+                <a class="mdl-navigation__link" href="@routes.Application.uploadPicture()">Upload a Profile Picture</a>
+                <a class="mdl-navigation__link" href="@routes.Application.search()">Search</a>
+                <a class="mdl-navigation__link" href="@routes.Application.logout()">Logout</a>
+            </nav>
+        </div>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+                    <div class = "form">
+                            <!---check if the form is null, null form takes you to an update page--->
+                            <!--- form will save everything--->
+
+                        <form action="/updateProfile" method="POST" >
+                            <input type="hidden" name="email" id="email" value="@m.getEmail()">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="firstName" name="firstName" value="@m.getFirstName()">
+                                <label class="mdl-textfield__label" for="firstName">First Name*</label>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="lastName" name="lastName" value="@m.getLastName()">
+                                <label class="mdl-textfield__label" for="lastName">Last Name*</label>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="password" id="password" name="password" value="@m.getPassword()">
+                                <label class="mdl-textfield__label" for="password">Password*</label>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="gradYear" name="gradYear" pattern="-?[0-9]*(\.[0-9]+)?" value="@m.getGradYear()">
+                                <label class="mdl-textfield__label" for="gradYear">Graduation Year</label>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="major" name="major" value="@m.getMajor()">
+                                <label class="mdl-textfield__label" for="major">Major</label>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="secondMajor" name="secondMajor" value="@m.getSecondMajor()">
+                                <label class="mdl-textfield__label" for="secondMajor">Second Major</label>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="PID" name="PID" value="@m.getPID()">
+                                <label class="mdl-textfield__label" for="PID">PID</label>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <textarea class="mdl-textfield__input" type="text" rows= "5" id="blurb" name="blurb"
+                                style="font-family:Helvetica,Arial,sans-serif">@m.getBlurb()</textarea>
+                                <label class="mdl-textfield__label" for="blurb">Write a short blurb...</label>
+                            </div>
+
+                                <!--- picture is stored as an image id, need a seperate form to upload images--->
+
+                            <br> <br> <br>
+
+                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" type="submit" style="border : 10 px ;">
+                                Save changes
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            @footer()
+        </main>
+
+    </div>
+
+</body>
+
+</html>

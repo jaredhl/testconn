@@ -1,0 +1,52 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+#do it the hard way
+GET     /                           controllers.Application.index()
+
+GET     /addTestUser                controllers.Application.addTestUser()
+
+GET     /modifyTestUser                controllers.Application.modifyTestUser()
+
+#GET and POST on login page retrieve page and try to login
+GET     /login                      controllers.Application.login()
+POST    /login                      controllers.Application.authenticateLogin()
+
+GET     /logout                     controllers.Application.logout()
+
+#load profile associated with a given email (to visit another user)
+GET     /visitProfile:email         controllers.Application.visitProfile(email:String)
+
+#load from http session (to look at own profile
+GET     /profile                    controllers.Application.profile()
+
+#go to the search page for both alumni and students
+GET     /search                     controllers.Application.search()
+
+#pull profile associated with this email and create a form for it based on alumnus or student
+GET     /updateProfile              controllers.Application.updateProfile()
+#bind input to member and save it
+POST    /updateProfile              controllers.Application.saveProfileUpdate()
+
+#used to load the picture associated with an account
+GET     /picture:email              controllers.Application.getPicture(email:String)
+
+#get and post request on the get member page call newMember and save(Member?)
+GET     /newMember                  controllers.Application.newMember()
+POST    /newMember                  controllers.Application.saveNewMember()
+
+#we will keep a seperate image upload page for now, should be able to add in to the existing newmember/update forms
+GET     /image                      controllers.Application.uploadPicture()
+POST    /image                      controllers.Application.receivePicture()
+
+#testing
+GET     /pic                        controllers.Application.showpic()
+
+#GET     /newAlumnusMember           controllers.Application.newAlumnusMember()
+#POST    /newAlumnusMember           controllers.Application.saveNewAlumnusMember()
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+

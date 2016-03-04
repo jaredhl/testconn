@@ -1,0 +1,7 @@
+#!/bin/bash
+# This script resets the bash PATH environment variable to the 
+# correct value after a restart. 
+# This is necessary because after a restart the bash reloads the 
+# default environmental variables and there is not a way (I have
+# found) to permently set the PATH env var.
+export PATH=$JAVA_HOME/bin:$PATH

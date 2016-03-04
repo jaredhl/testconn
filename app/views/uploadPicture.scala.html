@@ -1,0 +1,75 @@
+@(sendImage:Form[Image], member: Member)
+
+    <!---profiles page gets rendered with users profile text or as an input form, update button redirects to the same--->
+    <!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Upload Image</title>
+            <!--<link rel="stylesheet" href="profile.css" />-->
+        <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+        <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/material.min.css")"/>
+        <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+        <link rel="import" href="bower_components/paper-button/paper-button.html">
+        <link rel="import" href="bower_components/paper-input/paper-input.html">
+
+    </head>
+
+    <body>
+            <!-- The drawer is always open in large screens. The header is always shown,
+  even in small screens. -->
+        <style>
+        body  {
+        background-image: url("@routes.Assets.versioned("images/Campus Y Background.jpg")");
+        background-size: cover;
+        }
+
+        .demo-card-image.mdl-card {
+            width: 400px;
+            height: 400px;
+            background: url(@routes.Application.getPicture(member.getEmail())) center / cover;
+            margin: auto;
+        }
+        .mdl-card__actions{
+            background:rgba(0, 0, 0, .5);
+            color:white;
+        }
+        </style>
+
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
+            <div class="mdl-layout__drawer">
+                <span class="mdl-layout-title">Navigation</span>
+                <nav class="mdl-navigation">
+                        <!---add navigation to form input here--->
+                        <!---edit button opens s form inside tha card that can then be saved--->
+                    <a class="mdl-navigation__link" href="@routes.Application.profile()">View Profile</a>
+                    <a class="mdl-navigation__link" href="@routes.Application.updateProfile()">Edit Profile</a>
+                    <a class="mdl-navigation__link" href="@routes.Application.search()">Search</a>
+                    <a class="mdl-navigation__link" href="@routes.Application.logout()">Logout</a>
+                </nav>
+            </div>
+            <main class="mdl-layout__content">
+                <div class="page-content">
+
+
+   @*//                 @@helper.inputFile(sendImage("pic"))*@
+
+                    <div class="demo-card-image mdl-card mdl-shadow--2dp">
+                        <div class="mdl-card__title mdl-card--expand"></div>
+                        <div class="mdl-card__actions mdl-card--border">
+                        <form action="/image" method="POST" enctype="multipart/form-data">
+                            <input type="file" name="pic" id="pic">
+                            <input type="submit" value="Upload">
+                        </form>
+                        </div>
+                    </div>
+
+                </div>
+                @footer()
+            </main>
+        </div>
+
+    </body>
+
+</html>

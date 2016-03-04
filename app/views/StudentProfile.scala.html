@@ -1,0 +1,101 @@
+@import play.data.Form
+@(member: Member)
+<!---profiles page gets rendered with users profile text or as an input form, update button redirects to the same--->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Campus Y User</title>
+            <!--<link rel="stylesheet" href="profile.css" />-->
+        <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+        <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/material.min.css")"/>
+        <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+        <link rel="import" href="bower_components/paper-button/paper-button.html">
+        <link rel="import" href="bower_components/paper-input/paper-input.html">
+    </head>
+
+    <body>
+            <!-- The drawer is always open in large screens. The header is always shown,
+  even in small screens. -->
+        <style>
+        body  {
+        background-image: url("@routes.Assets.versioned("images/Campus Y Background.jpg")");
+        background-size: cover;
+        }
+
+        .demo-card-wide.mdl-card {
+        width: 512px;
+        margin: 0 auto;
+        }
+        .demo-card-wide > .mdl-card__title {
+        color:  #fff;
+        height: 146px;
+        background-color:#4a6a85;
+        }
+        .demo-card-wide > .mdl-card__title ul {
+        list-style-type: none;
+        columns: 2;
+        }
+        .demo-card-wide > .mdl-card__menu {
+        color: #fff;
+        }
+        .profilepic {
+            height:126px;
+            width:126px;
+            border-radius:126px;
+            background-clip: padding-box;
+            background-size: cover;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+
+        </style>
+
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
+            <div class="mdl-layout__drawer">
+                <span class="mdl-layout-title">Navigation</span>
+                <nav class="mdl-navigation">
+                        <!---add navigation to form input here--->
+                        <!---edit button opens s form inside tha card that can then be saved--->
+
+                    <a class="mdl-navigation__link" href="@routes.Application.updateProfile()">Edit Profile</a>
+                    <a class="mdl-navigation__link" href="@routes.Application.uploadPicture()">
+                        Upload a Profile Picture</a>
+                    <a class="mdl-navigation__link" href="@routes.Application.search()">Search</a>
+                    <a class="mdl-navigation__link" href="@routes.Application.logout()">Logout</a>
+                </nav>
+            </div>
+            <main class="mdl-layout__content">
+                <div class="page-content">
+                    <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+                        <div class="mdl-card__title">
+                            <div class = "headerinfo mdl-card__title-text">
+                                @member.getFirstName() @member.getLastName()
+
+                            </div>
+                            <div class = "profilepic" style="background-image:url(@routes.Application.getPicture(member.getEmail()))"></div>
+                        </div>
+
+                            <!--- we were supplied a user, so render his/her info--->
+                        <div class="mdl-card__supporting-text">
+                            @personalinfo(member)
+                        </div>
+                        <div class="mdl-card__actions mdl-card--border">
+                            <a href="mailto:@member.getEmail()?Subject=Yconnect" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                                Email @member.getFirstName()
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+                @footer()
+            </main>
+        </div>
+
+    </body>
+
+</html>

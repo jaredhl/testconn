@@ -1,0 +1,119 @@
+@import play.data.Form
+@(studentForm:Form[models.Member])
+<!---profiles page gets rendered with users profile text or as an input form, update button redirects to the same--->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Campus Y User</title>
+            <!--<link rel="stylesheet" href="profile.css" />-->
+        <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+        <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/material.min.css")"/>
+        <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+        <link rel="import" href="bower_components/paper-button/paper-button.html">
+        <link rel="import" href="bower_components/paper-input/paper-input.html">
+    </head>
+
+    <body>
+        <style>
+        body  {
+        background-image: url("@routes.Assets.versioned("images/Campus Y Background.jpg")");
+        background-size: cover;
+        }
+        .demo-card-wide.mdl-card {
+        width: 512px;
+        margin: 0 auto;
+        }
+        .demo-card-wide > .mdl-card__title {
+        color:  #fff;
+        height: 176px;
+        background-color: #4a6a85
+        }
+        .demo-card-wide > .mdl-card__title ul {
+        list-style-type: none;
+        columns: 2;
+        }
+        .demo-card-wide > .mdl-card__menu {
+        color: #fff;
+        }
+        .mdl-textfield  {
+        margin-left:0px;
+        color:#0a2f4e;
+        }
+        .form{
+        padding: 30px;
+        }
+        </style>
+
+        <div class="mdl-layout mdl-js-layout">
+            <header class="mdl-layout__header">
+                <div class="mdl-layout__header-row" style="color:white; font-weight:bold;">
+                    YConnect Registration
+                </div>
+            </header>
+
+            <main class="mdl-layout__content">
+                <div class="page-content">
+                    <div class="form demo-card-wide mdl-card mdl-shadow--2dp">
+                            <!---check if the form is null, null form takes you to an update page--->
+                            <!--- form will save everything--->
+                            <!--- multipart form input --->
+                            <!---mom went to same school and didn't complain nearly as much...--->
+                        @if(studentForm.hasErrors) {
+                            <div class="alert alert-error" style="color:red;">
+                                Please fill out all required forms (*).
+                            </div>
+                        }
+                        @helper.form(action = routes.Application.saveNewMember()) {
+
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="firstName" name="firstName" >
+                                <label class="mdl-textfield__label" for="firstName">First Name*</label>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="lastName" name="lastName" >
+                                <label class="mdl-textfield__label" for="lastName">Last Name*</label>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="email" id="email" name="email" >
+                                <label class="mdl-textfield__label" for="email">Email Address*</label>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="password" id="password" name="password" >
+                                <label class="mdl-textfield__label" for="password">Password*</label>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="gradYear" name="gradYear" pattern="-?[0-9]*(\.[0-9]+)?">
+                                <label class="mdl-textfield__label" for="gradYear">Graduation Year</label>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="major" name="major">
+                                <label class="mdl-textfield__label" for="major">Major</label>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="secondMajor" name="secondMajor">
+                                <label class="mdl-textfield__label" for="secondMajor">Second Major</label>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="PID" name="PID">
+                                <label class="mdl-textfield__label" for="PID">PID</label>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <textarea class="mdl-textfield__input" type="text" rows= "5" id="blurb" name="blurb" ></textarea>
+                                <label class="mdl-textfield__label" for="blurb">Write a short blurb...</label>
+                            </div>
+
+                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" type="submit" name="send" style="border:10px;">
+                                Submit
+                            </button>
+                        }
+                    </div>
+                </div>
+                @footer()
+            </main>
+        </div>
+
+    </body>
+
+</html>

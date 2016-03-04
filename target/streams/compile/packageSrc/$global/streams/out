@@ -1,0 +1,29 @@
+[0m[[0minfo[0m] [0mPackaging C:\Users\Jared\Documents\CampusY\testconn\target\scala-2.11\testconn_2.11-1.0-SNAPSHOT-sources.jar ...[0m
+[0m[[0mdebug[0m] [0mInput file mappings:[0m
+[0m[[0mdebug[0m] [0m	controllers\ActionAuthenticator.java[0m
+[0m[[0mdebug[0m] [0m	  C:\Users\Jared\Documents\CampusY\testconn\app\controllers\ActionAuthenticator.java[0m
+[0m[[0mdebug[0m] [0m	controllers\Search.java[0m
+[0m[[0mdebug[0m] [0m	  C:\Users\Jared\Documents\CampusY\testconn\app\controllers\Search.java[0m
+[0m[[0mdebug[0m] [0m	routes[0m
+[0m[[0mdebug[0m] [0m	  C:\Users\Jared\Documents\CampusY\testconn\conf\routes[0m
+[0m[[0mdebug[0m] [0m	openshift.conf[0m
+[0m[[0mdebug[0m] [0m	  C:\Users\Jared\Documents\CampusY\testconn\conf\openshift.conf[0m
+[0m[[0mdebug[0m] [0m	controllers\Application.java[0m
+[0m[[0mdebug[0m] [0m	  C:\Users\Jared\Documents\CampusY\testconn\app\controllers\Application.java[0m
+[0m[[0mdebug[0m] [0m	evolutions\default[0m
+[0m[[0mdebug[0m] [0m	  C:\Users\Jared\Documents\CampusY\testconn\conf\evolutions\default[0m
+[0m[[0mdebug[0m] [0m	application.conf[0m
+[0m[[0mdebug[0m] [0m	  C:\Users\Jared\Documents\CampusY\testconn\conf\application.conf[0m
+[0m[[0mdebug[0m] [0m	evolutions[0m
+[0m[[0mdebug[0m] [0m	  C:\Users\Jared\Documents\CampusY\testconn\conf\evolutions[0m
+[0m[[0mdebug[0m] [0m	logback.xml[0m
+[0m[[0mdebug[0m] [0m	  C:\Users\Jared\Documents\CampusY\testconn\conf\logback.xml[0m
+[0m[[0mdebug[0m] [0m	evolutions\default\1.sql[0m
+[0m[[0mdebug[0m] [0m	  C:\Users\Jared\Documents\CampusY\testconn\conf\evolutions\default\1.sql[0m
+[0m[[0mdebug[0m] [0m	controllers\Login.java[0m
+[0m[[0mdebug[0m] [0m	  C:\Users\Jared\Documents\CampusY\testconn\app\controllers\Login.java[0m
+[0m[[0mdebug[0m] [0m	models\Image.java[0m
+[0m[[0mdebug[0m] [0m	  C:\Users\Jared\Documents\CampusY\testconn\app\models\Image.java[0m
+[0m[[0mdebug[0m] [0m	models\Member.java[0m
+[0m[[0mdebug[0m] [0m	  C:\Users\Jared\Documents\CampusY\testconn\app\models\Member.java[0m
+[0m[[0minfo[0m] [0mDone packaging.[0m

@@ -1,0 +1,157 @@
+@(membersList: List[Member], searchForm: play.data.Form[controllers.Search]) <!--- gets rendered with a list from the database --->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Search for a User</title>
+      <!--<link rel="stylesheet" href="profile.css" />-->
+    <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+    <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/material.min.css")"/>
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+    <link rel="import" href="bower_components/paper-button/paper-button.html">
+    <link rel="import" href="bower_components/paper-input/paper-input.html">
+
+  </head>
+  <body>
+
+    <style>
+    body  {
+    background-image: url("@routes.Assets.versioned("images/Campus Y Background.jpg")");
+    background-size: cover;
+    }
+    .demo-layout-transparent {
+    background:url('@routes.Assets.versioned("images/Campus Y Background.jpg")');background-size: cover;)
+    }
+    .demo-layout-transparent .mdl-layout__header,
+    .demo-layout-transparent .mdl-layout__drawer-button {
+    color: ghostwhite;
+    }
+    .page-content {
+    min-height: 100vh;
+    //background-color: grey;
+    }
+    .mdl-textfield {
+    margin-left: 10px;
+    width: 95%;
+    }
+    .mdl-textfield__input{
+        position: absolute;
+        bottom: 0;
+        color: #4a6a85;
+        border-bottom: solid;
+        border-bottom-color: #4a6a85;
+        font-size:24px;
+    }
+    .material-icons {
+    font-size: 48px;
+    }
+    .demo-card-wide.mdl-card {
+      width: 512px;
+      margin:auto;
+      margin-bottom:20px;
+    }
+    .demo-card-wide > .mdl-card__title {
+    color: #fff;
+    height: 176px;
+
+    }
+    .demo-card-wide > .mdl-card__menu {
+    color: #fff;
+    }
+    .resulttitle {
+    background-color : #4a6a85 ;
+    height: 100px !important;
+    }
+    .profilepic {
+        height:80px;
+        width:80px;
+        border-radius:80px;
+        background-clip: padding-box;
+        background-size: cover;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+
+    </style>
+
+      <div class="demo-layout-transparent mdl-layout mdl-js-layout">
+          <header class="mdl-layout__header">
+              <div class="mdl-layout__header-row">
+                      <!-- Title -->
+                  <span class="mdl-layout-title">Navigation</span>
+                      <!-- Add spacer, to align navigation to the right -->
+                  <div class="mdl-layout-spacer"></div>
+                      <!-- Navigation -->
+              </div>
+          </header>
+
+          <div class="mdl-layout__drawer">
+              <span class="mdl-layout-title">Navigation</span>
+              <nav class="mdl-navigation">
+                  <a class="mdl-navigation__link" href="@routes.Application.profile()">View Profile</a>
+                  <a class="mdl-navigation__link" href="@routes.Application.updateProfile()">Edit Profile</a>
+                  <a class="mdl-navigation__link" href="@routes.Application.logout()">Logout</a>
+              </nav>
+          </div>
+
+          <main class="mdl-layout__content">
+              <div class="page-content">
+                  <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+                      <div class="mdl-card__title">
+                          <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
+                                     mdl-textfield--floating-label">
+                          @helper.form(routes.Application.search()) {
+                                  <!---search button--->
+                              <button class="mdl-button mdl-js-button mdl-button--icon" for="search-expandable2">
+                                  <i class="material-icons material-icons.md-dark" style="color: rgba( 0, 0, 0, 0.54 );">
+                                      search</i>
+                              </button>
+                                  <!---end button--->
+                              <div class="mdl-textfield__expandable-holder">
+
+                                  <input name="query" class="mdl-textfield__input" type="String" id="search-expandable2" value="@searchForm("query").value">
+                                  <label class="mdl-textfield__label" for="search-expandable2">
+                                      Search User
+                                  </label>
+                              </div>
+                          }
+                          </div>
+                      </div>
+                      <div class="mdl-card__supporting-text">
+                          Search for a Campus Y member or Alumni.  You can also search by location, experience or other tags associated with users.
+                      </div>
+                  </div>
+
+                      <!--- cards start here --->
+                  @for(member <- membersList) {
+                      <!---render a card for each returned result--->
+                  <div class="result demo-card-wide mdl-card mdl-shadow--2dp">
+                      <div class="resulttitle mdl-card__title">
+                          <div class = "headerinfo mdl-card__title-text">
+                              @member.getFirstName() @member.getLastName()
+                          </div>
+                          <div class = "profilepic" style="background-image:url(@routes.Application.getPicture(member.getEmail()))"></div>
+                      </div>
+
+                          <!--- we were supplied a user, so render his/her info--->
+                      <div class="mdl-card__supporting-text">
+                      @personalinfo(member)
+                      </div>
+                      <div class="mdl-card__actions mdl-card--border">
+                          <a href="mailto:@member.getEmail()?Subject=Yconnect" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                              Email @member.getFirstName()
+                          </a>
+                      </div>
+                  </div>
+                  }
+
+              </div>
+
+          </main>
+
+      </div>
+
+  </body>
+</html>

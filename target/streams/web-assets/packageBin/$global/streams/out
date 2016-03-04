@@ -1,0 +1,23 @@
+[0m[[0minfo[0m] [0mPackaging C:\Users\Jared\Documents\CampusY\testconn\target\scala-2.11\testconn_2.11-1.0-SNAPSHOT-web-assets.jar ...[0m
+[0m[[0mdebug[0m] [0mInput file mappings:[0m
+[0m[[0mdebug[0m] [0m	public/images[0m
+[0m[[0mdebug[0m] [0m	  C:\Users\Jared\Documents\CampusY\testconn\public\images[0m
+[0m[[0mdebug[0m] [0m	public/stylesheets\material.min.css[0m
+[0m[[0mdebug[0m] [0m	  C:\Users\Jared\Documents\CampusY\testconn\public\stylesheets\material.min.css[0m
+[0m[[0mdebug[0m] [0m	public/images\Campus Y Background.jpg[0m
+[0m[[0mdebug[0m] [0m	  C:\Users\Jared\Documents\CampusY\testconn\public\images\Campus Y Background.jpg[0m
+[0m[[0mdebug[0m] [0m	public/stylesheets[0m
+[0m[[0mdebug[0m] [0m	  C:\Users\Jared\Documents\CampusY\testconn\public\stylesheets[0m
+[0m[[0mdebug[0m] [0m	public/stylesheets\main.css[0m
+[0m[[0mdebug[0m] [0m	  C:\Users\Jared\Documents\CampusY\testconn\public\stylesheets\main.css[0m
+[0m[[0mdebug[0m] [0m	public/images\heracles.jpg[0m
+[0m[[0mdebug[0m] [0m	  C:\Users\Jared\Documents\CampusY\testconn\public\images\heracles.jpg[0m
+[0m[[0mdebug[0m] [0m	public/images\defaultUserPic.png[0m
+[0m[[0mdebug[0m] [0m	  C:\Users\Jared\Documents\CampusY\testconn\public\images\defaultUserPic.png[0m
+[0m[[0mdebug[0m] [0m	public/javascripts\hello.js[0m
+[0m[[0mdebug[0m] [0m	  C:\Users\Jared\Documents\CampusY\testconn\public\javascripts\hello.js[0m
+[0m[[0mdebug[0m] [0m	public/images\favicon.png[0m
+[0m[[0mdebug[0m] [0m	  C:\Users\Jared\Documents\CampusY\testconn\public\images\favicon.png[0m
+[0m[[0mdebug[0m] [0m	public/javascripts[0m
+[0m[[0mdebug[0m] [0m	  C:\Users\Jared\Documents\CampusY\testconn\public\javascripts[0m
+[0m[[0minfo[0m] [0mDone packaging.[0m
